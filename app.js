@@ -1,6 +1,7 @@
 play(); // This is your main function that runs when the page loads
 
 function play() {
+  let playerScores = {};
   let tries = 1;
   let keepPlaying = true;
   let number = 100;
@@ -20,6 +21,14 @@ function play() {
           )}.`
         );
         alert(`It only took you ${tries} tries.`);
+        if (
+          playerScores.hasOwnProperty(playerName) &&
+          playerScores[playerName] < tries
+        ) {
+          playerScores[playerName] = tries;
+        } else {
+          playerScores[playerName] = tries;
+        }
         let keepPlayingQuestion = prompt(
           `keep playing ${playerName}?`
         ).toLocaleLowerCase();
@@ -27,6 +36,10 @@ function play() {
           secretNumber = GenerateNumber();
           tries = 1;
           playerGuesses = [];
+          let newPlayer = prompt("Are you a new player?");
+          if (newPlayer === "y" || newPlayer === "yes") {
+            playerName = prompt("Input your name!");
+          }
           continue;
         } else {
           keepPlaying = false;
