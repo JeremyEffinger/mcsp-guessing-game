@@ -23,8 +23,13 @@ function play() {
         alert(`It only took you ${tries} tries.`);
         if (
           playerScores.hasOwnProperty(playerName) &&
-          playerScores[playerName] < tries
+          playerScores[playerName] > tries
         ) {
+          alert(
+            `Nice job ${playerName} you beat your previous record by ${
+              playerScores[playerName] - tries
+            } attempts!`
+          );
           playerScores[playerName] = tries;
         } else {
           playerScores[playerName] = tries;
